@@ -14,7 +14,7 @@ organization_url = 'https://triumphbcap.visualstudio.com'
 credentials = BasicAuthentication('', personal_access_token)
 connection = Connection(base_url=organization_url, creds=credentials)
 
-work_items = [x.strip() for x in open(sys.argv[1], "r").readlines()]
+work_items = [int(x.strip()) for x in open(sys.argv[1], "r").readlines()]
 pr_ids = []
 pull_requests = []
 wit_client = connection.clients.get_work_item_tracking_client()
