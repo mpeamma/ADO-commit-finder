@@ -27,13 +27,10 @@ for item_id in work_items:
         if rel.attributes["name"] == 'Pull Request':
             pr_ids.append(int(urllib.parse.unquote(rel.url).split('/')[-1]))
 
-print(Fore.GREEN + "Associated Pull Requests: ")
-[print(x) for x in pr_ids]
-
 # Get Pull Requests from ADO API
 for pr_id in pr_ids:
     pull_requests.append(git_client.get_pull_request_by_id(pr_id))
-print("Commits: ")
+
 [print(x.last_merge_commit.commit_id) for x in pull_requests if x.merge_status == 'succeeded' and x.target_ref_name == 'refs/heads/develop']
 #[pprint.pprint(x.__dict__) for x in pull_requests if x.merge_status == 'succeeded' and x.target_ref_name == 'refs/heads/develop']
 print(Style.RESET_ALL)
