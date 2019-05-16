@@ -9,7 +9,7 @@ from azure.devops.v5_1.git.git_client import GitClient
 import pprint
 
 # Create a connection to the org
-personal_access_token = 'be46yvwdfc7wbslcc273t5rfg53k5f7wmwobuv3gn53gjjvypmya'
+personal_access_token = open("access_token", "r").read().strip()
 organization_url = 'https://triumphbcap.visualstudio.com'
 credentials = BasicAuthentication('', personal_access_token)
 connection = Connection(base_url=organization_url, creds=credentials)
