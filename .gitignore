@@ -1,0 +1,7 @@
+.Python
+access_token
+work-items
+bin/**
+include/**
+lib/**
+.idea/**
