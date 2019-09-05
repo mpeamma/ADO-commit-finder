@@ -27,6 +27,10 @@ for item_id in work_items:
         if rel.attributes["name"] == 'Pull Request':
             pr_ids.append(int(urllib.parse.unquote(rel.url).split('/')[-1]))
 
+# Remove duplicate PRs
+pr_ids = list(dict.fromkeys(pr_ids))
+pr_ids.sort()
+
 # Get Pull Requests from ADO API
 for pr_id in pr_ids:
     pull_requests.append(git_client.get_pull_request_by_id(pr_id))
